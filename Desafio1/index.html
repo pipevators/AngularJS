@@ -1,44 +1,37 @@
 <!DOCTYPE html>
-<html ng-app="store" lang="en">
+<html ng-app="desafio" lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>q xuxas</title>
+    <title>Desafio 1</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/small-business.css" rel="stylesheet">
-
+    <!-- AngularJS -->   
     <script src="angular.js"></script>
     <script src="script.js"></script>
 </head>
 
-<body>
+<body  ng-controller="FormController as desafio">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand" href="#">
                     <img src="http://placehold.it/150x50&text=Logo" alt="">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <h1 class="side-logo">&nbsp;&nbsp;XMart la mejor tienda</h1>
+            <h1 class="side-logo">&nbsp;&nbsp;XMart la mejor tienda </h1>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -46,80 +39,117 @@
 
     <!-- Page Content -->
     <div class="container">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Inicio</a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Blog <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Tienda</a></li>
-                <li><a href="#">Contacto</a></li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+        <!-- Nav bar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Inicio</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Blog </a></li>
+                        <li><a href="#">Tienda</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
 
         <!-- Content Row -->
         <div class="row">
             <div class="col-md-6">
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="control-label col-sm-3" for="name">Nombres</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
+                 <!-- Forulario -->
+                <form ng-submit="submit()" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="name" >Nombres</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="user.name" class="form-control" id="name" placeholder="Ingrese su nombre" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
-                    <div class="col-sm-9"> 
-                      <input type="password" class="form-control" id="lastName" placeholder="Ingrese su apellido">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
+                        <div class="col-sm-9"> 
+                            <input type="text" ng-model="user.lastName" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-3" for="mail" >Correo</label>
-                    <div class="col-sm-9"> 
-                      <input type="email" class="form-control" id="mail" placeholder="Ingrese su correo">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="mail" >Correo</label>
+                        <div class="col-sm-9"> 
+                            <input type="email" ng-model="user.email" class="form-control" id="email" placeholder="Ingrese su correo" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
-                    <div class="col-sm-9"> 
-                      <input type="text" class="form-control" id="dir1" placeholder="su dirección">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
+                        <div class="col-sm-9"> 
+                            <input type="text" ng-model="user.dir1" class="form-control" id="dir1" placeholder="su dirección" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
-                    <div class="col-sm-9"> 
-                      <input type="text" class="form-control" id="dir2" placeholder="su dirección">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
+                        <div class="col-sm-9"> 
+                            <input type="text" ng-model="user.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group"> 
-                    <div class="col-sm-offset-2 col-sm-3">
-                      <button type="submit" class="btn btn-default">Ingresar</button>
+                    <div class="form-group"> 
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="submit" class="btn btn-default" id="submit" value="Ingresar"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="button" class="btn btn-default" ng-click="clean()" value="Limpiar"/>
+                        </div>
                     </div>
-                    <div class="col-sm-offset-2 col-sm-3">
-                      <button type="submit" class="btn btn-default">Limpiar</button>
-                    </div>
-                  </div>
+
                 </form>   
             </div>
-            <!-- /.col-md-4 -->
+            <!--  -->
             <div class="col-md-6">
-                <h2>Heading 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem nisi accusamus error velit animi non ipsa placeat. Recusandae, suscipit, soluta quibusdam accusamus a veniam quaerat eveniet eligendi dolor consectetur.</p>
-                <a class="btn btn-default" href="#">More Info</a>
+                 <!-- Datos -->
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="name" >Nombres</label>
+                        <div class="col-sm-9">
+                            <p>{{name}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
+                        <div class="col-sm-9"> 
+                            <p>{{lastName}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="email" >Correo</label>
+                        <div class="col-sm-9"> 
+                            <p>{{email}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
+                        <div class="col-sm-9"> 
+                            <p>{{dir1}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
+                        <div class="col-sm-9"> 
+                            <p>{{dir2}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="submit" class="btn btn-default" ng-click="showAlert()" ng-show="confirm" value="Confirmar"/>
+                        </div>
+                </form>
+
             </div>
         </div>
         <!-- /.row -->
@@ -128,6 +158,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12 text-right">
+                <hr>
                     <p>Diseñado por piperocks &copy; 2016</p>
                 </div>
             </div>

@@ -1,35 +1,43 @@
 
-var app=angular.module("store",[]);
+var app=angular.module("desafio",[]);
   
-app.controller("PruebaController",function($scope){
-	$scope.mensaje="Hola ";
+app.controller("FormController", ['$scope',function($scope){
 
-	this.animals = mamiferos;
-});
+	//Visivilidad de boton confirmar
+	$scope.confirm = true;
 
-var mamiferos = [
-	{
-		name: 'Nutria',
-		color: 'Negra',
-		available: true,
-		price: 123,
-		lost: false,
-		images: [
-	      "images/perro_verde.png",
-	      "images/perro_verde.png",
-	      "images/gem-09.gif"
-	    ]
-	},
-	{
-		name: 'Perro',
-		color: 'Verde',
-		available: true,
-		price: 666,
-		lost: false,
-		images: [
-	      "images/perro_verde.png",
-	      "images/gem-05.gif",
-	      "images/gem-09.gif"
-	    ]
-	}
-];
+	//Submit de formulario
+	$scope.submit = function() {
+
+		$scope.name=$scope.user.name;
+		$scope.lastName = $scope.user.lastName;
+		$scope.email = $scope.user.email;
+		$scope.dir1 = $scope.user.dir1;
+		$scope.dir2 = $scope.user.dir2;
+
+		$scope.user.name = '';
+		$scope.user.lastName = '';
+		$scope.user.email = '';
+		$scope.user.dir1 = '';
+		$scope.user.dir2 = '';
+		
+	};
+
+	//Muestra alerta y oculta botón
+	$scope.showAlert = function() {
+		$scope.confirm = false;
+		alert("q xuxas");
+	};
+
+	//Limpia lado derecho
+	$scope.clean = function() {
+		$scope.name = "";
+		$scope.user = "";
+		$scope.lastName = "";
+		$scope.email = "";
+		$scope.dir1 = "";
+		$scope.dir2 = "";
+	};
+
+
+}]);
