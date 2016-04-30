@@ -29,7 +29,7 @@ app.controller("FormController", ['$scope',function($scope){
 		alert("q xuxas");
 	};
 
-	//Limpia lado derecho
+	//Limpia variables
 	$scope.clean = function() {
 		$scope.name = "";
 		$scope.user = "";
