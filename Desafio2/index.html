@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html ng-app="desafio" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Desafio 2</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/desafio.css" rel="stylesheet">
+    <!-- AngularJS -->   
+    <script src="js/angular.js"></script>
+    <script src="js/desafio.js"></script>
+    <!-- UI bootstrap -->
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+   
+</head>
+
+<body  ng-controller="formController as vCtrl" ng-cloak>
+
+    <!-- Page Content -->
+    <div class="container-fluid">
+        <!-- Logo -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="http://placehold.it/150x50&text=Logo" alt="">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <h1 class="side-logo">&nbsp;&nbsp;XMart la mejor tienda </h1>
+                <!-- /.navbar-collapse -->
+        </nav>
+        <!-- Nav bar -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Inicio <span class="sr-only">(actual)</span></a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Tienda</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>  
+            </div>
+        </nav>
+
+        <!-- Content Row -->
+        <div class="row">
+            
+            <!-- Lista de Clientes -->
+            <div class="col-md-6">
+                <h2>Listado de clientes {{vCtrl.clientList.length}}</h2>
+                <div class="list-group">
+                    <a href="" class="list-group-item" ng-repeat="client in filteredClients" ng-click="vCtrl.showInfo($index,client)">
+                        {{client.names | firstWord}} {{client.lastNames | firstWord}}
+                    </a>
+                </div>
+                
+                <pagination 
+                    ng-model="currentPage"
+                    total-items="vCtrl.clientList.length"
+                    max-size="maxSize"  
+                    boundary-links="true">
+                </pagination>
+            </div>
+
+            <!-- Formulario Datos de cliente -->
+            <div class="col-md-6">
+
+                <h2>Datos cliente &nbsp;</h2>
+                <form class="form-horizontal" role="form" ng-submit="vCtrl.save()">
+                    
+                    <!-- Datos cliente-->
+                    <div class="form-group" ng-show="vCtrl.editButton">
+                        <label class="control-label col-sm-3" for="name" >Nombres</label>
+                        <div class="col-sm-9">
+                            <p>{{vCtrl.inputData.names}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.editButton">
+                        <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.lastNames}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.editButton">
+                        <label class="control-label col-sm-3" for="email" >Correo</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.email}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.editButton">
+                        <label class="control-label col-sm-3" for="dir1s" >Dirección 1</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.dir1}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.editButton">
+                        <label class="control-label col-sm-3" for="dir2s" >Dirección 2</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.dir2}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-hide="vCtrl.inputData.rut == null || vCtrl.inputForm ">
+                        <label class="control-label col-sm-3" for="rut1" >RUT</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.rut}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-hide="vCtrl.inputData.phone == null || vCtrl.inputForm ">
+                        <label class="control-label col-sm-3" for="phone1" >Teléfono</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.phone}}</p>
+                        </div>
+                    </div>
+
+                    <!-- Inputs formulario-->
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="name" >Nombres</label>
+                        <div class="col-sm-9">
+                            <p>{{vCtrl.inputData.names}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.lastNames}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="email" >Correo</label>
+                        <div class="col-sm-9"> 
+                            <p>{{vCtrl.inputData.email}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
+                        <div class="col-sm-6"> 
+                            <input type="text" ng-model="vCtrl.inputData.dir1" class="form-control" id="dir1" placeholder="su dirección"  required>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
+                        <div class="col-sm-6"> 
+                            <input type="text" ng-model="vCtrl.inputData.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="rut2" >RUT</label>
+                        <div class="col-sm-6"> 
+                            <input type="text" ng-model="vCtrl.inputData.rut" class="form-control" id="dir2" placeholder="RUT del cliente" required pattern="\d{7,8}-[\d|kK]{1}" title="Debe ser un Rut válido. Formato: 1234567-8">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="vCtrl.inputForm">
+                        <label class="control-label col-sm-3" for="phone2" >Teléfono</label>
+                        <div class="col-sm-6"> 
+                            <input type="number" ng-model="vCtrl.inputData.phone" class="form-control" id="dir2" placeholder="teléfono del cliente" required>
+                        </div>
+                    </div>
+
+                    <!-- Botones fromulario-->
+                    <div class="col-sm-6 clearfix" ng-show="vCtrl.editButton">
+                        <button type="button" class="btn btn-primary pull-right" ng-click="vCtrl.edit()">
+                            Editar &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                    </div>
+                    <div class="col-sm-6 clearfix" ng-show="vCtrl.inputButtons">
+                        <button type="button" class="btn btn-danger pull-right" ng-click="vCtrl.clean()">
+                            <span class="glyphicon glyphicon-remove"></span> Limpiar &nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                    <div class="col-sm-3 clearfix" ng-show="vCtrl.inputButtons">
+                        <button type="submit" class="btn btn-success pull-right" id="submit" >
+                            Confirmar &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-disk"></span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12 text-right">
+                <hr>
+                    <p>Diseñado por piperocks &copy; 2016 &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
