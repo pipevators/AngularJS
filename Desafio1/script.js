@@ -1,43 +1,45 @@
 
-var app=angular.module("desafio",[]);
-  
-app.controller("FormController", ['$scope',function($scope){
+angular.module("desafio",[])
+	.controller("formController",function(){
 
-	//Visivilidad de boton confirmar
-	$scope.confirm = true;
+		var cForm = this,
+            /**
+            * Inicializa los objetos utilizados para el despliegue de datos en la vista
+            */
+            init = function () {
+                //Visivilidad de boton confirmar
+                cForm.confirmButton = true;
+                cForm.inputData = {};
+                cForm.showData = {};
+            };
 
-	//Submit de formulario
-	$scope.submit = function() {
-
-		$scope.name=$scope.user.name;
-		$scope.lastName = $scope.user.lastName;
-		$scope.email = $scope.user.email;
-		$scope.dir1 = $scope.user.dir1;
-		$scope.dir2 = $scope.user.dir2;
-
-		$scope.user.name = '';
-		$scope.user.lastName = '';
-		$scope.user.email = '';
-		$scope.user.dir1 = '';
-		$scope.user.dir2 = '';
 		
-	};
 
-	//Muestra alerta y oculta botón
-	$scope.showAlert = function() {
-		$scope.confirm = false;
-		alert("q xuxas");
-	};
+		//Submit de formulario
+		cForm.submit = function() {
 
-	//Limpia variables
-	$scope.clean = function() {
-		$scope.name = "";
-		$scope.user = "";
-		$scope.lastName = "";
-		$scope.email = "";
-		$scope.dir1 = "";
-		$scope.dir2 = "";
-	};
+			cForm.showData = angular.copy(cForm.inputData);
+            
+            // Cambia el valor de la variable para despliegue del botón de confirmación
+            cForm.confirmButton = true;
+			
+		};
 
+		//Muestra alerta y oculta botón
+		cForm.showAlert = function() {
+			cForm.confirmButton = false;
+			alert("datos guardados");
+		};
 
-}]);
+		//Limpia variables
+		cForm.clean = function() {
+            init();
+            
+            // retorna true para que el flujo del evento continúe normalmente (está asociado 
+            // a un botón de tipo reset)
+            return true;
+		};
+
+		init();
+
+	});

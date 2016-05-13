@@ -8,53 +8,47 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Desafio 1</title>
+    <title>Desafio 2</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/small-business.css" rel="stylesheet">
+    <link href="css/desafio.css" rel="stylesheet">
     <!-- AngularJS -->   
     <script src="angular.js"></script>
     <script src="script.js"></script>
 </head>
 
-<body  ng-controller="FormController as desafio">
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="http://placehold.it/150x50&text=Logo" alt="">
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <h1 class="side-logo">&nbsp;&nbsp;XMart la mejor tienda </h1>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+<body  ng-controller="formController as cForm">
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container-fluid">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="http://placehold.it/150x50&text=Logo" alt="">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <h1 class="side-logo">&nbsp;&nbsp;XMart la mejor tienda </h1>
+                <!-- /.navbar-collapse -->
+        </nav>
 
         <!-- Nav bar -->
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Inicio</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Blog </a></li>
-                        <li><a href="#">Tienda</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Inicio <span class="sr-only">(actual)</span></a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Tienda</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>  
             </div>
         </nav>
 
@@ -62,35 +56,35 @@
         <div class="row">
             <div class="col-md-6">
                  <!-- Forulario -->
-                <form ng-submit="submit()" class="form-horizontal" role="form">
+                <form ng-submit="cForm.submit()" class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name" >Nombres</label>
                         <div class="col-sm-9">
-                            <input type="text" ng-model="user.name" class="form-control" id="name" placeholder="Ingrese su nombre" required>
+                            <input type="text" ng-model="cForm.inputData.name" class="form-control" id="name" placeholder="Ingrese su nombre" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="user.lastName" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
+                            <input type="text" ng-model="cForm.inputData.lastName" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="mail" >Correo</label>
                         <div class="col-sm-9"> 
-                            <input type="email" ng-model="user.email" class="form-control" id="email" placeholder="Ingrese su correo" required>
+                            <input type="email" ng-model="cForm.inputData.email" class="form-control" id="email" placeholder="Ingrese su correo" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="user.dir1" class="form-control" id="dir1" placeholder="su dirección" required>
+                            <input type="text" ng-model="cForm.inputData.dir1" class="form-control" id="dir1" placeholder="su dirección" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="user.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
+                            <input type="text" ng-model="cForm.inputData.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
                         </div>
                     </div>
                     <div class="form-group"> 
@@ -100,7 +94,7 @@
                             <input type="submit" class="btn btn-default" id="submit" value="Ingresar"/>
                         </div>
                         <div class="col-sm-3">
-                            <input type="button" class="btn btn-default" ng-click="clean()" value="Limpiar"/>
+                            <input type="button" class="btn btn-default" ng-click="cForm.clean()" value="Limpiar"/>
                         </div>
                     </div>
 
@@ -113,31 +107,31 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name" >Nombres</label>
                         <div class="col-sm-9">
-                            <p>{{name}}</p>
+                            <p>{{cForm.showData.name}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
                         <div class="col-sm-9"> 
-                            <p>{{lastName}}</p>
+                            <p>{{cForm.showData.lastName}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email" >Correo</label>
                         <div class="col-sm-9"> 
-                            <p>{{email}}</p>
+                            <p>{{cForm.showData.email}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
                         <div class="col-sm-9"> 
-                            <p>{{dir1}}</p>
+                            <p>{{cForm.showData.dir1}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
                         <div class="col-sm-9"> 
-                            <p>{{dir2}}</p>
+                            <p>{{cForm.showData.dir2}}</p>
                         </div>
                     </div>
                     <div class="form-group"> 
@@ -146,7 +140,7 @@
                         <div class="col-sm-3">
                         </div>
                         <div class="col-sm-3">
-                            <input type="submit" class="btn btn-default" ng-click="showAlert()" ng-show="confirm" value="Confirmar"/>
+                            <input type="submit" class="btn btn-default" ng-click="cForm.showAlert()" ng-show="cForm.confirmButton" value="Confirmar"/>
                         </div>
                 </form>
 
