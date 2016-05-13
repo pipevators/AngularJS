@@ -53,6 +53,12 @@ angular.module("desafio", ['ui.bootstrap'])
 			vCtrl.inputButtons = false;
 		};
 
+		//Elimina un cliente de la lista
+		vCtrl.delete = function(index){
+			vCtrl.clientList.splice(index + ($scope.currentPage - 1) * 10, 1);
+			vCtrl.pagination();
+		};
+
 		//Limpia variables
 		vCtrl.clean = function() {
             vCtrl.inputData.dir1 = '';
