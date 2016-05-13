@@ -58,10 +58,10 @@
             
             <!-- Lista de Clientes -->
             <div class="col-md-6">
-                <h2>Listado de clientes {{vCtrl.clientList.length}}</h2>
+                <h2>Listado de clientes</h2>
                 <div class="list-group">
                     <a href="" class="list-group-item" ng-repeat="client in filteredClients" ng-click="vCtrl.showInfo($index,client)">
-                        {{client.names | firstWord}} {{client.lastNames | firstWord}}
+                        {{client.names | firstWord}} {{client.lastNames | firstWord}} 
                     </a>
                 </div>
                 
