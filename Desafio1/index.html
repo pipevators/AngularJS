@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Desafio 2</title>
+    <title>Desafio 1</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <script src="script.js"></script>
 </head>
 
-<body  ng-controller="formController as cForm">
+<body  ng-controller="formController as vCtrl">
 
     <!-- Page Content -->
     <div class="container-fluid">
@@ -56,45 +56,43 @@
         <div class="row">
             <div class="col-md-6">
                  <!-- Forulario -->
-                <form ng-submit="cForm.submit()" class="form-horizontal" role="form">
+                <form ng-submit="vCtrl.submit()" class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name" >Nombres</label>
                         <div class="col-sm-9">
-                            <input type="text" ng-model="cForm.inputData.name" class="form-control" id="name" placeholder="Ingrese su nombre" required>
+                            <input type="text" ng-model="vCtrl.inputData.name" class="form-control" id="name" placeholder="Ingrese su nombre" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="cForm.inputData.lastName" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
+                            <input type="text" ng-model="vCtrl.inputData.lastName" class="form-control" id="lastName" placeholder="Ingrese su apellido" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="mail" >Correo</label>
                         <div class="col-sm-9"> 
-                            <input type="email" ng-model="cForm.inputData.email" class="form-control" id="email" placeholder="Ingrese su correo" required>
+                            <input type="email" ng-model="vCtrl.inputData.email" class="form-control" id="email" placeholder="Ingrese su correo" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="cForm.inputData.dir1" class="form-control" id="dir1" placeholder="su dirección" required>
+                            <input type="text" ng-model="vCtrl.inputData.dir1" class="form-control" id="dir1" placeholder="su dirección" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
                         <div class="col-sm-9"> 
-                            <input type="text" ng-model="cForm.inputData.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
+                            <input type="text" ng-model="vCtrl.inputData.dir2" class="form-control" id="dir2" placeholder="su dirección" required>
                         </div>
                     </div>
                     <div class="form-group"> 
-                        <div class="col-sm-3">
+                        <div class="col-sm-6">
+                            <input type="submit" class="btn btn-default pull-right" id="submit" value="Ingresar"/>
                         </div>
-                        <div class="col-sm-3">
-                            <input type="submit" class="btn btn-default" id="submit" value="Ingresar"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="button" class="btn btn-default" ng-click="cForm.clean()" value="Limpiar"/>
+                        <div class="col-sm-6">
+                            <input type="button" class="btn btn-default pull-right" ng-click="vCtrl.clean()" value="Limpiar"/>
                         </div>
                     </div>
 
@@ -107,31 +105,31 @@
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="name" >Nombres</label>
                         <div class="col-sm-9">
-                            <p>{{cForm.showData.name}}</p>
+                            <p>{{vCtrl.showData.name}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="lastName" >Apellidos</label>
                         <div class="col-sm-9"> 
-                            <p>{{cForm.showData.lastName}}</p>
+                            <p>{{vCtrl.showData.lastName}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="email" >Correo</label>
                         <div class="col-sm-9"> 
-                            <p>{{cForm.showData.email}}</p>
+                            <p>{{vCtrl.showData.email}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir1" >Dirección 1</label>
                         <div class="col-sm-9"> 
-                            <p>{{cForm.showData.dir1}}</p>
+                            <p>{{vCtrl.showData.dir1}}</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-3" for="dir2" >Dirección 2</label>
                         <div class="col-sm-9"> 
-                            <p>{{cForm.showData.dir2}}</p>
+                            <p>{{vCtrl.showData.dir2}}</p>
                         </div>
                     </div>
                     <div class="form-group"> 
@@ -140,7 +138,7 @@
                         <div class="col-sm-3">
                         </div>
                         <div class="col-sm-3">
-                            <input type="submit" class="btn btn-default" ng-click="cForm.showAlert()" ng-show="cForm.confirmButton" value="Confirmar"/>
+                            <input type="submit" class="btn btn-default" ng-click="vCtrl.showAlert()" ng-show="vCtrl.confirmButton" value="Confirmar"/>
                         </div>
                 </form>
 
@@ -153,7 +151,7 @@
             <div class="row">
                 <div class="col-lg-12 text-right">
                 <hr>
-                    <p>Diseñado por piperocks &copy; 2016</p>
+                    <p>Diseñado por piperocks &copy; 2016 &nbsp;&nbsp;&nbsp;&nbsp;</p>
                 </div>
             </div>
         </footer>

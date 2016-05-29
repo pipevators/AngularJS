@@ -63,6 +63,7 @@
                     <a href="" class="list-group-item" ng-repeat="client in filteredClients" ng-click="vCtrl.showInfo($index,client)">
                         {{client.names | firstWord}} {{client.lastNames | firstWord}} 
                     </a>
+                    <!-- <a href="" class="btn" ng-click="vCtrl.delete($index)">Delete</a> -->
                 </div>
                 
                 <pagination 
